@@ -1,0 +1,88 @@
+<div ng-show="isAdd || isEdit || isShow" class="form-horizontal">
+	
+	<div ng-hide="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="nazwa">Nazwa:</label>
+	  <div class="col-sm-10">
+	    <input id="nazwa" type="text" class="form-control" ng-model="product.prdNazwa" placeholder="Nazwa produktu" />
+	  </div>
+	</div>
+	<div ng-show="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="nazwaShow">Nazwa:</label>
+	  <div class="col-sm-10">
+	    <input id="nazwaShow" type="text" class="form-control" ng-model="product.prdNazwa" disabled />
+	  </div>
+	</div>
+  
+	<div ng-hide="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="rodzaj">Rodzaj:</label>
+	  <div class="col-sm-10">
+	    <select id="rodzaj" class="form-control" ng-model="rodzaj" ng-options="rodz.rdpId as rodz.rdpNazwa for rodz in rodzajeProduktu">
+	      <option value='' disabled>Rodzaj produktu</option>
+	    </select>
+	  </div>
+	</div>
+	
+	<div ng-show="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="rodzajShow">Rodzaj:</label>
+	  <div class="col-sm-10">
+	    <input id="rodzajShow" type="text" class="form-control" ng-model="rodzajShow" disabled />
+	  </div>
+	</div>
+  
+	<div ng-hide="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="miara">Miara:</label>
+	  <div class="col-sm-10">
+	    <select id="miara" class="form-control" ng-model="miara" ng-options="miar.mipId as miar.mipNazwa for miar in miaryProduktu">
+	      <option value='' disabled>Rodzaj produktu</option>
+	    </select>
+	  </div>
+	</div>
+	
+	<div ng-show="isShow" class="form-group">
+	  <label class="control-label col-sm-2" for="miaraShow">Miara:</label>
+	  <div class="col-sm-10">
+	    <input id="miaraShow" type="text" class="form-control" ng-model="miaraShow" disabled />
+	  </div>
+	</div>
+  
+  <div ng-show="isAdd || isEdit" class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button ng-show="isAdd" class="btn btn-primary input-margin" ng-click="addProduct()"><span class="glyphicon glyphicon-ok-sign"/></button>
+      <button ng-show="isEdit" class="btn btn-primary input-margin" ng-click="editProduct()"><span class="glyphicon glyphicon-ok-sign"/></button>
+      <button class="btn btn-primary input-margin" ng-click="cancelProduct()"><span class="glyphicon glyphicon-remove-sign"/></button>
+    </div>
+  </div>
+  
+</div>
+
+<h3 class="ng-scope" style="display: inline-block;">
+  Product List 
+  <button class="btn btn-mini btn-success" ng-click="startAddProduct()">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+  </button>
+</h3>
+<div class="alert alert-info" ng-show="products.length == 0">No products found</div>
+<table class="table table-bordered table-striped" ng-show="products.length > 0">
+	<thead>
+		<tr>
+			<th style="width: 25px;">Action</th>
+			<th>Product Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="prd in products track by $index">
+			<td style="width:150px">
+			  <button class="btn btn-mini btn-success" ng-click="startShowProduct(prd)">
+			    <span class="glyphicon glyphicon-info-sign"></span>
+			  </button>
+			  <button class="btn btn-mini btn-danger" ng-click="removeProduct(prd)">
+				<span class="glyphicon glyphicon-remove-sign"></span>
+			  </button>
+			  <button class="btn btn-mini btn-warning" ng-click="startEditProduct(prd)">
+				<span class="glyphicon glyphicon-pencil"></span>
+			  </button>
+			</td>
+			<td >{{prd.prdNazwa}}</td>
+		</tr>
+	</tbody>
+</table>

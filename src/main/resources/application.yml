@@ -1,0 +1,16 @@
+security:
+  user:
+    name: kot
+    password: asd123
+logging:
+  level:
+    org.springframework.security: DEBUG
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/kucharz
+    username: kucharz
+    password: kucharz
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
