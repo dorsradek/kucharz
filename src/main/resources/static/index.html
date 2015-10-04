@@ -11,7 +11,8 @@
 <body ng-app="hello" ng-cloak class="ng-cloak">
 	<!-- Static navbar -->
 	<nav ng-controller="navigation" class="navbar navbar-default navbar-static-top">
-	  <div class="container">
+	
+		<div class="container">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	        <span class="sr-only">Toggle navigation</span>
@@ -19,7 +20,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="/">Kucharz</a>
+	      <a class="navbar-brand" href="/">{{ 'INDEX_COOK' | translate }}</a>
 	    </div>
 	    <div id="navbar" class="navbar-collapse collapse">
 	      <ul class="nav navbar-nav">
@@ -28,31 +29,27 @@
 			<li ng-show="authenticated()" ng-class="{active:tab('product')}"><a href="/product">Produkty</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-			<li ng-hide="authenticated()"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			<li ng-hide="authenticated()"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			<li ng-show="authenticated()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			<li ng-show="getLanguage() != 'pl'"><a href="" ng-click="changeLanguage('pl')">{{ 'INDEX_BUTTON_TEXT_PL' | translate }}</a></li>
+			<li ng-show="getLanguage() != 'en'"><a href="" ng-click="changeLanguage('en')">{{ 'INDEX_BUTTON_TEXT_EN' | translate }}</a></li>
+			<li ng-hide="authenticated()"><a href="#"><span class="glyphicon glyphicon-user"></span> {{ 'INDEX_SIGN_UP' | translate }}</a></li>
+			<li ng-hide="authenticated()"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> {{ 'INDEX_LOGIN' | translate }}</a></li>
+			<li ng-show="authenticated()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> {{ 'INDEX_LOGOUT' | translate }}</a></li>
 	      </ul>
 	    </div>
 	  </div>
 	</nav>
 
 	<div ng-view class="container"></div>
-
-
-	<!-- <div ng-controller="navigation" class="container menu-container">
-		<ul class="nav nav-pills" role="tablist">
-			<li ng-show="authenticated()" ng-class="{active:tab('home')}"><a href="/">home</a></li>
-			<li ng-show="authenticated()" ng-class="{active:tab('message')}"><a href="/message">message</a></li>
-			<li ng-show="isAdmin()" ng-class="{active:tab('cars')}"><a href="/cars">cars</a></li>
-			<li ng-show="authenticated()" ng-class="{active:tab('product')}"><a href="/product">Produkty</a></li>
-			<li ng-hide="authenticated()"><a href="/login">login</a></li>
-			<li ng-show="authenticated()"><a href="" ng-click="logout()">logout</a></li>
-		</ul>
-	</div>
-	<div ng-view class="container"></div> -->
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-resource.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.min.js"></script>
+	
+    <script src="https://rawgit.com/angular-translate/bower-angular-translate/2.6.1/angular-translate.js"></script>
+    <script src="https://rawgit.com/angular-translate/bower-angular-translate-loader-static-files/2.6.1/angular-translate-loader-static-files.min.js"></script>
+    <script src="https://rawgit.com/angular-translate/bower-angular-translate-storage-cookie/2.6.1/angular-translate-storage-cookie.min.js"></script>
+    <script src="https://rawgit.com/angular-translate/bower-angular-translate-storage-local/2.6.1/angular-translate-storage-local.min.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="js/auth/auth.js" type="text/javascript"></script>
@@ -62,5 +59,5 @@
 	<script src="js/cars/cars.js" type="text/javascript"></script>
 	<script src="js/product/product.js" type="text/javascript"></script>
 	<script src="js/hello.js" type="text/javascript"></script>
-</body>
+	</body>
 </html>
