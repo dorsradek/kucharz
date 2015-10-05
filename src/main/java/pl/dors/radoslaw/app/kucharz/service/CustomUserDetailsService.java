@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UzytkownikRepository uzytkownikRepository;
 
+	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
 		pl.dors.radoslaw.app.kucharz.model.Uzytkownik uzytkownik = uzytkownikRepository.findFirstByUztLogin(login);

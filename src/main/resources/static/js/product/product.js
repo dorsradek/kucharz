@@ -25,10 +25,10 @@ angular.module('product', []).controller('product', function($scope, $http) {
 		$http.get('/product/productlist.json').success(function(productlist) {
 			$scope.products = productlist;
 			$scope.product = {};
-			if ($scope.miaryProduktu != undefined) {
+			if ($scope.miaryProduktu !== undefined) {
 				$scope.miara = $scope.miaryProduktu[0].mipId;
 			}
-			if ($scope.rodzajeProduktu != undefined) {
+			if ($scope.rodzajeProduktu !== undefined) {
 				$scope.rodzaj = $scope.rodzajeProduktu[0].rdpId;
 			}
 		});
@@ -47,14 +47,14 @@ angular.module('product', []).controller('product', function($scope, $http) {
 				$scope.rodzajShow = rodzaj.rdpNazwa;
 			});
 		});
-	}
+	};
 	
 	$scope.startAddProduct = function() {
 		$scope.fetchProductsList();
 		$scope.isEdit = false;
 		$scope.isAdd = true;
 		$scope.isShow = false;
-	}
+	};
 
 	$scope.startEditProduct = function(prd) {
 		$scope.isEdit = true;
@@ -69,11 +69,11 @@ angular.module('product', []).controller('product', function($scope, $http) {
 				$scope.rodzaj = rodzaj.rdpId;
 			});
 		});
-	}
+	};
 
 	$scope.cancelProduct = function() {
 		$scope.fetchProductsList();
-	}
+	};
 
 	$scope.addProduct = function() {
 		$scope.parseDataFromForm();
@@ -112,7 +112,7 @@ angular.module('product', []).controller('product', function($scope, $http) {
 		$scope.product.rodzajProduktu = {};
 		$scope.product.miaraProduktu.mipId = $scope.miara;
 		$scope.product.rodzajProduktu.rdpId = $scope.rodzaj;
-	}
+	};
 
 	$scope.fetchProductsList();
 	$scope.fetchMiaryProduktuList();

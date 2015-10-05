@@ -4,5 +4,7 @@
 	"INDEX_SIGN_UP" : "Sign up",
 	"INDEX_LOGIN" : "Login",
 	"INDEX_LOGOUT" : "Logout",
-	"INDEX_COOK" : "Cook"
+	"INDEX_COOK" : "Cook",
+	"INDEX_RECIPES" : "Recipes",
+	"INDEX_PRODUCTS" : "Products"
 }

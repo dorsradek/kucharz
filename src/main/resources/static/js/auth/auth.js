@@ -7,10 +7,9 @@ angular.module('auth', []).factory('auth', function($rootScope, $http, $location
 				$location.path(auth.loginPath);
 			}
 		}
-	}
+	};
 
 	var auth = {
-
 		authenticated : false,
 		role : '',
 
@@ -42,7 +41,6 @@ angular.module('auth', []).factory('auth', function($rootScope, $http, $location
 				auth.role = '';
 				callback && callback(false);
 			});
-
 		},
 
 		clear : function() {
@@ -57,7 +55,6 @@ angular.module('auth', []).factory('auth', function($rootScope, $http, $location
 		},
 
 		init : function(homePath, loginPath, logoutPath) {
-
 			auth.homePath = homePath;
 			auth.loginPath = loginPath;
 			auth.logoutPath = logoutPath;
@@ -66,18 +63,14 @@ angular.module('auth', []).factory('auth', function($rootScope, $http, $location
 				if (authenticated) {
 					$location.path(auth.path);
 				}
-			})
+			});
 
 			// Guard route changes and switch to login page if
 			// unauthenticated
 			$rootScope.$on('$routeChangeStart', function() {
 				enter();
 			});
-
 		}
-
 	};
-
 	return auth;
-
 });
